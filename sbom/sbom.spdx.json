@@ -1,0 +1,692 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "tigergate-test-cpp-0.3.0",
+  "documentNamespace": "https://example.com/spdx/tigergate-test-cpp/c965a718-7eb5-5932-81d1-9c5c5eb77df4",
+  "creationInfo": {
+    "created": "2026-09-11T00:00:00Z",
+    "creators": [
+      "Tool: fixture-generator-0.3.0"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-tigergate-test-cpp",
+      "name": "tigergate-test-cpp",
+      "versionInfo": "0.3.0",
+      "downloadLocation": "git+ssh://github.com/jayanagaraj-source/tigergate-test-cpp.git",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-openssl",
+      "name": "openssl",
+      "versionInfo": "1.0.2u",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/openssl@1.0.2u"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-zlib",
+      "name": "zlib",
+      "versionInfo": "1.2.11",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/zlib@1.2.11"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-libcurl",
+      "name": "libcurl",
+      "versionInfo": "7.68.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/libcurl@7.68.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-libxml2",
+      "name": "libxml2",
+      "versionInfo": "2.9.10",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/libxml2@2.9.10"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-expat",
+      "name": "expat",
+      "versionInfo": "2.2.9",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/expat@2.2.9"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-libpng",
+      "name": "libpng",
+      "versionInfo": "1.6.36",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/libpng@1.6.36"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-sqlite3",
+      "name": "sqlite3",
+      "versionInfo": "3.31.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/sqlite3@3.31.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-boost",
+      "name": "boost",
+      "versionInfo": "1.71.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/boost@1.71.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-jsoncpp",
+      "name": "jsoncpp",
+      "versionInfo": "1.8.4",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/jsoncpp@1.8.4"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-nlohmann_json",
+      "name": "nlohmann_json",
+      "versionInfo": "3.7.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/nlohmann_json@3.7.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-fmt",
+      "name": "fmt",
+      "versionInfo": "6.1.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/fmt@6.1.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-spdlog",
+      "name": "spdlog",
+      "versionInfo": "1.5.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/spdlog@1.5.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-protobuf",
+      "name": "protobuf",
+      "versionInfo": "3.11.4",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/protobuf@3.11.4"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-poco",
+      "name": "poco",
+      "versionInfo": "1.9.4",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/poco@1.9.4"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-libssh2",
+      "name": "libssh2",
+      "versionInfo": "1.9.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/libssh2@1.9.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-pcre",
+      "name": "pcre",
+      "versionInfo": "8.43",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/pcre@8.43"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-yaml-cpp",
+      "name": "yaml-cpp",
+      "versionInfo": "0.6.3",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/yaml-cpp@0.6.3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-tinyxml2",
+      "name": "tinyxml2",
+      "versionInfo": "7.0.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/tinyxml2@7.0.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-cpp-httplib",
+      "name": "cpp-httplib",
+      "versionInfo": "0.5.5",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/cpp-httplib@0.5.5"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-libtiff",
+      "name": "libtiff",
+      "versionInfo": "4.1.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/libtiff@4.1.0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-libjpeg-turbo",
+      "name": "libjpeg-turbo",
+      "versionInfo": "2.0.4",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/libjpeg-turbo@2.0.4"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-freetype",
+      "name": "freetype",
+      "versionInfo": "2.10.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/freetype@2.10.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-lz4",
+      "name": "lz4",
+      "versionInfo": "1.9.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/lz4@1.9.2"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-zstd",
+      "name": "zstd",
+      "versionInfo": "1.4.4",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/zstd@1.4.4"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-bzip2",
+      "name": "bzip2",
+      "versionInfo": "1.0.6",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/bzip2@1.0.6"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-c-ares",
+      "name": "c-ares",
+      "versionInfo": "1.16.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/c-ares@1.16.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-libwebp",
+      "name": "libwebp",
+      "versionInfo": "1.0.3",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/libwebp@1.0.3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-openjpeg",
+      "name": "openjpeg",
+      "versionInfo": "2.3.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/openjpeg@2.3.1"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-cmake",
+      "name": "cmake",
+      "versionInfo": "3.16.3",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/cmake@3.16.3"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-ninja",
+      "name": "ninja",
+      "versionInfo": "1.10.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:conan/ninja@1.10.0"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-tigergate-test-cpp"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-openssl"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-zlib"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-libcurl"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-libxml2"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-expat"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-libpng"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-sqlite3"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-boost"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-jsoncpp"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-nlohmann_json"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-fmt"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-spdlog"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-protobuf"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-poco"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-libssh2"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-pcre"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-yaml-cpp"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-tinyxml2"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-cpp-httplib"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-libtiff"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-libjpeg-turbo"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-freetype"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-lz4"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-zstd"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-bzip2"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-c-ares"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-libwebp"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-openjpeg"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-cmake"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-tigergate-test-cpp",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-ninja"
+    }
+  ]
+}

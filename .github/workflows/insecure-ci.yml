@@ -1,0 +1,33 @@
+name: Insecure CI Fixture
+# pull_request_target + checkout of the PR head = untrusted code with secrets.
+on:
+  pull_request_target:
+  issue_comment:
+    types: [created]
+
+permissions: write-all
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: true
+
+      # Expression injection: untrusted event data interpolated into a shell.
+      - name: Greet
+        run: echo "Thanks for '${{ github.event.pull_request.title }}' by ${{ github.event.comment.body }}"
+
+      # Secrets echoed to the log and passed on the command line.
+      - name: Deploy
+        env:
+          AWS_ACCESS_KEY_ID: AKIAQ4FIXTURE0TEST01
+          AWS_SECRET_ACCESS_KEY: fx7Q9tZ2mK4pL8wR1nB5vC3yH6jD0sA2eG9uT4iX
+        run: |
+          echo "token=${{ secrets.GITHUB_TOKEN }}"
+          curl -sk http://install.example.com/deploy.sh | bash -s -- --token ${{ secrets.DEPLOY_TOKEN }}
+
+      - uses: some-org/unpinned-action@main
+      - uses: docker://alpine:latest

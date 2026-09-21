@@ -1,3 +1,42 @@
 services:
   app:
     build: .
+    image: tigergate-test-cpp:latest
+    privileged: true
+    network_mode: host
+    pid: host
+    ipc: host
+    user: root
+    restart: always
+    cap_add: [SYS_ADMIN, NET_ADMIN, SYS_PTRACE, ALL]
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    environment:
+      DATABASE_URL: postgres://admin:password123@db:5432/tigergate
+      AWS_ACCESS_KEY_ID: AKIAQ4FIXTURE0TEST01
+      AWS_SECRET_ACCESS_KEY: fx7Q9tZ2mK4pL8wR1nB5vC3yH6jD0sA2eG9uT4iX
+      GITHUB_TOKEN: ghp_Fixture0TokenNotReal1234567890abcdEFGH
+      JWT_SECRET: fixture-jwt-signing-secret-do-not-use
+    volumes:
+      - /:/host
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/shadow:/etc/shadow:ro
+    ports:
+      - "0.0.0.0:22:22"
+      - "0.0.0.0:8080:8080"
+
+  db:
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "0.0.0.0:5432:5432"
+
+  cache:
+    image: redis:5.0
+    command: redis-server --protected-mode no
+    ports:
+      - "0.0.0.0:6379:6379"

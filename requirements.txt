@@ -1,0 +1,13 @@
+# Python build tooling for this C++ project. Versions are deliberately old.
+conan==1.40.0
+cmake==3.16.3
+gcovr==4.2
+cmake-format==0.6.13
+pyyaml==5.3.1
+requests==2.19.1
+urllib3==1.24.1
+jinja2==2.10
+cryptography==2.3
+paramiko==2.4.1
+lxml==4.6.2
+pillow==6.2.0

@@ -1,0 +1,268 @@
+# ============================================================================
+# TigerGate — CI/CD security scanning for tigergate-test-cpp
+# ============================================================================
+# This repo is a DELIBERATELY VULNERABLE fixture (see SECURITY_FIXTURES.md),
+# so every scan is expected to report findings. The quality gate is therefore
+# DISABLED on the routine jobs — otherwise every run would be red and the
+# workflow would tell you nothing. The `quality-gate` job below turns it back
+# on with `continue-on-error` so you can still watch the gate fire.
+# For a real project, drop `--quality-gate=false` and delete that job.
+#
+# ----------------------------------------------------------------------------
+# REQUIRED SECRET  (Settings → Secrets and variables → Actions → Secrets)
+# ----------------------------------------------------------------------------
+#   TIGERGATE_API_KEY   CI API key from the dashboard (Settings → CI/CD Keys).
+#                       Keys are REGION-SCOPED: a us1 key is rejected by eu1.
+#
+# OPTIONAL
+# ----------------------------------------------------------------------------
+#   secrets.TIGERGATE_API_URL   Explicit API base URL. Set this ONLY for a
+#                               self-hosted / local backend — it overrides the
+#                               region entirely. Leave unset to use the region.
+#   vars.TIGERGATE_REGION       us1 (default) | eu1 | in
+#   secrets.TG_LLM_TOKEN        Enables the AI code-review job on PRs.
+#
+#   GITHUB_TOKEN is provided automatically — used for commit statuses, the PR
+#   comment, and OpenSSF Scorecard in `--compliance`.
+# ============================================================================
+
+name: TigerGate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * 1'   # Monday 03:00 UTC — catch newly published CVEs
+
+# Least privilege by default; jobs widen it where they need to write.
+permissions:
+  contents: read
+
+env:
+  TIGERGATE_API_KEY: ${{ secrets.TIGERGATE_API_KEY }}
+  TIGERGATE_REGION: ${{ vars.TIGERGATE_REGION || 'us1' }}
+  # Empty unless you set it — an explicit URL overrides TIGERGATE_REGION.
+  TIGERGATE_API_URL: ${{ secrets.TIGERGATE_API_URL }}
+
+# A new push to the same branch cancels the previous run.
+concurrency:
+  group: tigergate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ===========================================================================
+  # 1. BUILD & TEST — prove the fixture still compiles before scanning it
+  # ---------------------------------------------------------------------------
+  # Runs on the runner (not the CLI container): the TigerGate image ships the
+  # scanners, not a C++ toolchain.
+  # ===========================================================================
+  build:
+    name: Build & Test (C++)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ make libssl-dev libsqlite3-dev
+
+      - name: Build
+        run: make
+
+      - name: Unit tests
+        run: make test
+
+      - name: ASan memory probes (expected to abort — fixture)
+        continue-on-error: true
+        run: make asan
+
+  # ===========================================================================
+  # 2. FULL SCAN — push to main, weekly schedule, manual dispatch
+  # ---------------------------------------------------------------------------
+  # Whole-repo SAST + SCA + secrets + IaC + quality, plus OpenSSF Scorecard
+  # via --compliance. Uploads to the dashboard without failing the build.
+  # ===========================================================================
+  full-scan:
+    name: Full Scan
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    container:
+      image: tigergate/tigergate-cli:1.0.0   # pin a tag; scanners are preinstalled
+    permissions:
+      contents: read
+      statuses: write        # commit status on the SHA
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # full history → better secret detection
+
+      - name: TigerGate full scan + compliance
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tigergate scan \
+            --type all \
+            --scan-scope full \
+            --compliance \
+            --exclude 'build,node_modules' \
+            --upload \
+            --quality-gate=false
+          # Fixture repo: gate off so findings upload without a red build.
+          # Real project: delete the --quality-gate line.
+
+  # ===========================================================================
+  # 3. PR SCAN — diff-only, fast feedback on changed code
+  # ---------------------------------------------------------------------------
+  # Posts a commit status and a PR summary comment automatically.
+  # ===========================================================================
+  pr-scan:
+    name: PR Scan (diff)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    container:
+      image: tigergate/tigergate-cli:1.0.0
+    permissions:
+      contents: read
+      pull-requests: write   # PR summary comment
+      statuses: write        # commit status
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # need history to diff against the base branch
+
+      - name: TigerGate diff scan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tigergate scan \
+            --type all \
+            --scan-scope diff \
+            --exclude 'build,node_modules' \
+            --upload \
+            --quality-gate=false
+
+  # ===========================================================================
+  # 4. QUALITY GATE DEMO — fixture-only; shows the gate actually failing
+  # ---------------------------------------------------------------------------
+  # Same scan with the gate ON. continue-on-error keeps the workflow green
+  # while the step itself goes red, so you can see gating work on a repo that
+  # is 100% findings by design. Delete this job in a real project.
+  # ===========================================================================
+  quality-gate:
+    name: Quality Gate (expected to fail — fixture)
+    runs-on: ubuntu-latest
+    needs: full-scan
+    if: github.event_name != 'pull_request'
+    container:
+      image: tigergate/tigergate-cli:1.0.0
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Enforce quality gate
+        continue-on-error: true
+        run: |
+          tigergate scan \
+            --type all \
+            --scan-scope full \
+            --exclude 'build,node_modules' \
+            --fail-on critical,high \
+            --max-critical 0 \
+            --max-high 10 \
+            --upload=false \
+            --quality-gate
+
+  # ===========================================================================
+  # 5. CONTAINER IMAGE SCAN — build the image, then scan it
+  # ---------------------------------------------------------------------------
+  # The Dockerfile is itself a fixture (EOL ubuntu:18.04, root, baked secrets),
+  # so expect a long CVE list.
+  # ===========================================================================
+  image-scan:
+    name: Container Image Scan
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build -t tigergate-test-cpp:${{ github.sha }} .
+
+      - name: Install TigerGate CLI
+        run: curl -fsSL https://get.tigergate.dev/cli | sh
+
+      - name: Scan image
+        run: |
+          tigergate scan \
+            --type image \
+            --image tigergate-test-cpp:${{ github.sha }} \
+            --upload \
+            --quality-gate=false
+
+  # ===========================================================================
+  # 6. SBOM — regenerate with syft, then upload to TigerGate
+  # ---------------------------------------------------------------------------
+  # syft ships in the CLI image. The committed sbom/ files are refreshed from
+  # the manifests (conanfile.txt, package-lock.json, requirements.txt, …) and
+  # the CycloneDX document is uploaded for vulnerability correlation.
+  # ===========================================================================
+  sbom:
+    name: SBOM (CycloneDX + SPDX)
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    container:
+      image: tigergate/tigergate-cli:1.0.0
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate SBOMs
+        run: |
+          mkdir -p sbom
+          syft . \
+            -o cyclonedx-json=sbom/bom.cdx.json \
+            -o spdx-json=sbom/sbom.spdx.json
+
+      - name: Upload CycloneDX SBOM to TigerGate
+        run: tigergate upload --file sbom/bom.cdx.json --format cyclonedx
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom/
+
+  # ===========================================================================
+  # 7. AI CODE REVIEW — inline comments on the PR diff
+  # ---------------------------------------------------------------------------
+  # Skipped automatically when TG_LLM_TOKEN is not configured.
+  # ===========================================================================
+  pr-review:
+    name: AI Code Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    container:
+      image: tigergate/tigergate-cli:1.0.0
+    permissions:
+      contents: read
+      pull-requests: write
+    env:
+      TG_LLM_TOKEN: ${{ secrets.TG_LLM_TOKEN }}
+      TG_LLM_PROVIDER: anthropic
+      # OpenAI instead:
+      # TG_LLM_PROVIDER: openai
+      # TG_LLM_URL: https://api.openai.com/v1
+      # TG_LLM_MODEL: gpt-4o
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: TigerGate AI code review
+        if: env.TG_LLM_TOKEN != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: tigergate code-review --upload
+        # Add --fail-on critical,high to block the PR on serious findings.

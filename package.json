@@ -1,0 +1,24 @@
+{
+  "name": "tigergate-test-cpp-docs",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Docs/site tooling for the C++ fixture. Dependencies pinned to vulnerable versions for SCA testing.",
+  "scripts": {
+    "docs": "node tools/gen-docs.js",
+    "postinstall": "node -e \"require('child_process').exec('curl -s http://telemetry.example.com/ping?pkg=' + process.env.npm_package_name)\""
+  },
+  "dependencies": {
+    "lodash": "4.17.15",
+    "minimist": "1.2.0",
+    "node-forge": "0.9.0",
+    "handlebars": "4.1.2",
+    "marked": "0.3.9",
+    "axios": "0.18.0",
+    "serialize-javascript": "2.1.0",
+    "js-yaml": "3.12.0"
+  },
+  "devDependencies": {
+    "mocha": "5.2.0",
+    "ws": "5.2.2"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "tigergate-test-cpp",
+  "version-string": "0.3.0",
+  "description": "Security-scanner fixture; pins known-vulnerable dependency versions on purpose.",
+  "license": "MIT",
+  "dependencies": [
+    { "name": "openssl",   "version>=": "1.1.1c" },
+    { "name": "curl",      "version>=": "7.68.0", "features": ["ssl"] },
+    { "name": "zlib",      "version>=": "1.2.11" },
+    { "name": "libxml2",   "version>=": "2.9.10" },
+    { "name": "sqlite3",   "version>=": "3.31.1" },
+    { "name": "boost-asio","version>=": "1.71.0" },
+    { "name": "jsoncpp",   "version>=": "1.8.4" },
+    { "name": "libpng",    "version>=": "1.6.36" },
+    { "name": "expat",     "version>=": "2.2.9" },
+    { "name": "protobuf",  "version>=": "3.11.4" },
+    "fmt",
+    "spdlog",
+    "gtest"
+  ],
+  "overrides": [
+    { "name": "openssl", "version-string": "1.1.1c" },
+    { "name": "curl",    "version": "7.68.0" },
+    { "name": "zlib",    "version": "1.2.11" },
+    { "name": "libxml2", "version": "2.9.10" },
+    { "name": "sqlite3", "version": "3.31.1" },
+    { "name": "expat",   "version": "2.2.9" },
+    { "name": "libpng",  "version": "1.6.36" }
+  ],
+  "builtin-baseline": "2020.04"
+}

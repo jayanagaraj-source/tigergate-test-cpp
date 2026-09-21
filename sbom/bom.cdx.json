@@ -1,0 +1,603 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:b162fe4e-cead-5158-acbe-dbbedcbbb24d",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-09-11T00:00:00Z",
+    "tools": [
+      {
+        "vendor": "tigergate",
+        "name": "fixture-generator",
+        "version": "0.3.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "bom-ref": "pkg:generic/tigergate-test-cpp@0.3.0",
+      "name": "tigergate-test-cpp",
+      "version": "0.3.0",
+      "purl": "pkg:generic/tigergate-test-cpp@0.3.0"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/openssl@1.0.2u",
+      "name": "openssl",
+      "version": "1.0.2u",
+      "purl": "pkg:conan/openssl@1.0.2u",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/zlib@1.2.11",
+      "name": "zlib",
+      "version": "1.2.11",
+      "purl": "pkg:conan/zlib@1.2.11",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/libcurl@7.68.0",
+      "name": "libcurl",
+      "version": "7.68.0",
+      "purl": "pkg:conan/libcurl@7.68.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/libxml2@2.9.10",
+      "name": "libxml2",
+      "version": "2.9.10",
+      "purl": "pkg:conan/libxml2@2.9.10",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/expat@2.2.9",
+      "name": "expat",
+      "version": "2.2.9",
+      "purl": "pkg:conan/expat@2.2.9",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/libpng@1.6.36",
+      "name": "libpng",
+      "version": "1.6.36",
+      "purl": "pkg:conan/libpng@1.6.36",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/sqlite3@3.31.1",
+      "name": "sqlite3",
+      "version": "3.31.1",
+      "purl": "pkg:conan/sqlite3@3.31.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/boost@1.71.0",
+      "name": "boost",
+      "version": "1.71.0",
+      "purl": "pkg:conan/boost@1.71.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/jsoncpp@1.8.4",
+      "name": "jsoncpp",
+      "version": "1.8.4",
+      "purl": "pkg:conan/jsoncpp@1.8.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/nlohmann_json@3.7.0",
+      "name": "nlohmann_json",
+      "version": "3.7.0",
+      "purl": "pkg:conan/nlohmann_json@3.7.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/fmt@6.1.2",
+      "name": "fmt",
+      "version": "6.1.2",
+      "purl": "pkg:conan/fmt@6.1.2",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/spdlog@1.5.0",
+      "name": "spdlog",
+      "version": "1.5.0",
+      "purl": "pkg:conan/spdlog@1.5.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/protobuf@3.11.4",
+      "name": "protobuf",
+      "version": "3.11.4",
+      "purl": "pkg:conan/protobuf@3.11.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/poco@1.9.4",
+      "name": "poco",
+      "version": "1.9.4",
+      "purl": "pkg:conan/poco@1.9.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/libssh2@1.9.0",
+      "name": "libssh2",
+      "version": "1.9.0",
+      "purl": "pkg:conan/libssh2@1.9.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/pcre@8.43",
+      "name": "pcre",
+      "version": "8.43",
+      "purl": "pkg:conan/pcre@8.43",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/yaml-cpp@0.6.3",
+      "name": "yaml-cpp",
+      "version": "0.6.3",
+      "purl": "pkg:conan/yaml-cpp@0.6.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/tinyxml2@7.0.0",
+      "name": "tinyxml2",
+      "version": "7.0.0",
+      "purl": "pkg:conan/tinyxml2@7.0.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/cpp-httplib@0.5.5",
+      "name": "cpp-httplib",
+      "version": "0.5.5",
+      "purl": "pkg:conan/cpp-httplib@0.5.5",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/libtiff@4.1.0",
+      "name": "libtiff",
+      "version": "4.1.0",
+      "purl": "pkg:conan/libtiff@4.1.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/libjpeg-turbo@2.0.4",
+      "name": "libjpeg-turbo",
+      "version": "2.0.4",
+      "purl": "pkg:conan/libjpeg-turbo@2.0.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/freetype@2.10.1",
+      "name": "freetype",
+      "version": "2.10.1",
+      "purl": "pkg:conan/freetype@2.10.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/lz4@1.9.2",
+      "name": "lz4",
+      "version": "1.9.2",
+      "purl": "pkg:conan/lz4@1.9.2",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/zstd@1.4.4",
+      "name": "zstd",
+      "version": "1.4.4",
+      "purl": "pkg:conan/zstd@1.4.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/bzip2@1.0.6",
+      "name": "bzip2",
+      "version": "1.0.6",
+      "purl": "pkg:conan/bzip2@1.0.6",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/c-ares@1.16.1",
+      "name": "c-ares",
+      "version": "1.16.1",
+      "purl": "pkg:conan/c-ares@1.16.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/libwebp@1.0.3",
+      "name": "libwebp",
+      "version": "1.0.3",
+      "purl": "pkg:conan/libwebp@1.0.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/openjpeg@2.3.1",
+      "name": "openjpeg",
+      "version": "2.3.1",
+      "purl": "pkg:conan/openjpeg@2.3.1",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/cmake@3.16.3",
+      "name": "cmake",
+      "version": "3.16.3",
+      "purl": "pkg:conan/cmake@3.16.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:conan/ninja@1.10.0",
+      "name": "ninja",
+      "version": "1.10.0",
+      "purl": "pkg:conan/ninja@1.10.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:generic/tigergate-test-cpp@0.3.0",
+      "dependsOn": [
+        "pkg:conan/openssl@1.0.2u",
+        "pkg:conan/zlib@1.2.11",
+        "pkg:conan/libcurl@7.68.0",
+        "pkg:conan/libxml2@2.9.10",
+        "pkg:conan/expat@2.2.9",
+        "pkg:conan/libpng@1.6.36",
+        "pkg:conan/sqlite3@3.31.1",
+        "pkg:conan/boost@1.71.0",
+        "pkg:conan/jsoncpp@1.8.4",
+        "pkg:conan/nlohmann_json@3.7.0",
+        "pkg:conan/fmt@6.1.2",
+        "pkg:conan/spdlog@1.5.0",
+        "pkg:conan/protobuf@3.11.4",
+        "pkg:conan/poco@1.9.4",
+        "pkg:conan/libssh2@1.9.0",
+        "pkg:conan/pcre@8.43",
+        "pkg:conan/yaml-cpp@0.6.3",
+        "pkg:conan/tinyxml2@7.0.0",
+        "pkg:conan/cpp-httplib@0.5.5",
+        "pkg:conan/libtiff@4.1.0",
+        "pkg:conan/libjpeg-turbo@2.0.4",
+        "pkg:conan/freetype@2.10.1",
+        "pkg:conan/lz4@1.9.2",
+        "pkg:conan/zstd@1.4.4",
+        "pkg:conan/bzip2@1.0.6",
+        "pkg:conan/c-ares@1.16.1",
+        "pkg:conan/libwebp@1.0.3",
+        "pkg:conan/openjpeg@2.3.1",
+        "pkg:conan/cmake@3.16.3",
+        "pkg:conan/ninja@1.10.0"
+      ]
+    },
+    {
+      "ref": "pkg:conan/openssl@1.0.2u",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/zlib@1.2.11",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/libcurl@7.68.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/libxml2@2.9.10",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/expat@2.2.9",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/libpng@1.6.36",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/sqlite3@3.31.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/boost@1.71.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/jsoncpp@1.8.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/nlohmann_json@3.7.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/fmt@6.1.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/spdlog@1.5.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/protobuf@3.11.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/poco@1.9.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/libssh2@1.9.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/pcre@8.43",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/yaml-cpp@0.6.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/tinyxml2@7.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/cpp-httplib@0.5.5",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/libtiff@4.1.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/libjpeg-turbo@2.0.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/freetype@2.10.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/lz4@1.9.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/zstd@1.4.4",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/bzip2@1.0.6",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/c-ares@1.16.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/libwebp@1.0.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/openjpeg@2.3.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/cmake@3.16.3",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:conan/ninja@1.10.0",
+      "dependsOn": []
+    }
+  ]
+}

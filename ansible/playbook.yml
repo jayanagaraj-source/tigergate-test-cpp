@@ -1,0 +1,44 @@
+# Deliberately insecure Ansible fixture. Do not run against real hosts.
+- name: Provision tigergate build agent
+  hosts: all
+  become: true
+  vars:
+    db_password: password123
+    aws_access_key: AKIAQ4FIXTURE0TEST01
+    aws_secret_key: fx7Q9tZ2mK4pL8wR1nB5vC3yH6jD0sA2eG9uT4iX
+  tasks:
+    - name: Install toolchain from an unverified HTTP source
+      get_url:
+        url: http://install.example.com/toolchain.tar.gz
+        dest: /tmp/toolchain.tar.gz
+        validate_certs: false
+
+    - name: Run installer via shell with interpolated variable
+      shell: "curl -sk http://install.example.com/agent.sh | bash -s -- {{ db_password }}"
+
+    - name: Write credentials world-readable
+      copy:
+        dest: /etc/tigergate/credentials
+        mode: "0777"
+        content: |
+          [default]
+          aws_access_key_id = {{ aws_access_key }}
+          aws_secret_access_key = {{ aws_secret_key }}
+
+    - name: Allow root SSH with password
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^PermitRootLogin"
+        line: "PermitRootLogin yes"
+
+    - name: Disable firewall
+      service:
+        name: ufw
+        state: stopped
+        enabled: false
+
+    - name: Add passwordless sudo
+      lineinfile:
+        path: /etc/sudoers
+        line: "ALL ALL=(ALL) NOPASSWD: ALL"
+        validate: false

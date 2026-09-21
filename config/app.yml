@@ -1,0 +1,3 @@
+doxyfile: docs/Doxyfile
+hook: "console.log('docs built')"
+inlineJs: "window.__cfg = {}"

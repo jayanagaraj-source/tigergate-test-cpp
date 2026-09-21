@@ -1,0 +1,82 @@
+# TigerGate CI/CD Configuration
+# Documentation: https://docs.tigergate.dev/ci-cd/config
+
+# TigerGate region that owns this repository's results.
+# Regions are independent: an API key issued in one is not valid in another.
+# Valid: us1 | eu1 | in
+# Overridden by --region and $TIGERGATE_REGION. Run "tigergate-scanner regions" to list them.
+region: us1
+
+# Scan types to run: sast, sca, quality, image, all
+scan_types:
+  - all
+
+# Severities that fail the quality gate
+fail_on:
+  - critical
+  - high
+
+# Paths to exclude from scanning
+exclude_paths:
+  - test/
+  - vendor/
+  - node_modules/
+  - "*.test.*"
+  - "*.spec.*"
+
+# SAST (Static Application Security Testing) configuration
+sast:
+  rules:
+    - p/default
+    - p/owasp-top-ten
+    - p/security-audit
+  # custom_rules_dir: ./semgrep-rules  # path to custom Semgrep rules (rule files ONLY - non-rule YAML aborts the scan)
+  # severity: [critical, high, medium]  # filter by severity
+  # languages: [python, javascript]     # filter by language
+
+# SCA (Software Composition Analysis) configuration
+sca:
+  ignore_unfixed: false
+  # ignore_cves:
+  #   - CVE-2024-0001  # known false positive
+
+# Container image scanning
+image:
+  images:
+    - tigergate-test-cpp:latest   # run `docker compose build` first
+  scan_secrets: true
+  scan_misconfig: true
+  ignore_unfixed: false
+
+# Code quality thresholds
+quality:
+  max_complexity: 25        # max cyclomatic complexity per function
+  max_function_lines: 100   # max lines per function
+  max_file_lines: 500       # max lines per file
+  # ignore_patterns:
+  #   - "generated_*.go"
+
+# Quality gate — findings exceeding these thresholds fail the pipeline
+# Set to -1 to disable a threshold
+quality_gate:
+  max_critical: 0    # zero tolerance for critical issues
+  max_high: 10
+  max_medium: -1     # no limit
+  max_low: -1        # no limit
+  # min_coverage: 80   # minimum test coverage %
+  # max_duplication: 5  # max code duplication %
+
+# Third-party tool imports
+# Run external tools and import their results into TigerGate
+# imports:
+#   - name: ESLint
+#     command: npx eslint . --format @microsoft/eslint-formatter-sarif --output-file eslint.sarif
+#     output: eslint.sarif
+#     format: sarif
+#     type: sast
+#
+#   - name: Snyk
+#     command: snyk test --json > snyk.json
+#     output: snyk.json
+#     format: grype
+#     type: sca

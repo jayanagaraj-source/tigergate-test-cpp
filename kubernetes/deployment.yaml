@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tigergate-test-cpp
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -11,12 +12,43 @@ spec:
       labels: { app: tigergate-test-cpp }
     spec:
       hostNetwork: true # Deliberately insecure IaC fixture.
+      hostPID: true
+      hostIPC: true
+      serviceAccountName: default
+      automountServiceAccountToken: true
       containers:
         - name: app
           image: tigergate-test-cpp:latest
+          imagePullPolicy: Always
           securityContext:
             privileged: true
             runAsUser: 0
+            runAsNonRoot: false
+            allowPrivilegeEscalation: true
+            readOnlyRootFilesystem: false
+            capabilities:
+              add: ["SYS_ADMIN", "NET_ADMIN", "NET_RAW", "SYS_PTRACE"]
           env:
             - name: DATABASE_PASSWORD
               value: "fixture-password-not-real"
+            - name: AWS_ACCESS_KEY_ID
+              value: "AKIAQ4FIXTURE0TEST01"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "fx7Q9tZ2mK4pL8wR1nB5vC3yH6jD0sA2eG9uT4iX"
+            - name: GITHUB_TOKEN
+              value: "ghp_Fixture0TokenNotReal1234567890abcdEFGH"
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+          volumeMounts:
+            - name: host-root
+              mountPath: /host
+            - name: docker-sock
+              mountPath: /var/run/docker.sock
+      volumes:
+        - name: host-root
+          hostPath:
+            path: /
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock

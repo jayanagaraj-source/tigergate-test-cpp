@@ -1,0 +1,63 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Deliberately insecure CloudFormation fixture for scanner validation. Do not deploy.
+Parameters:
+  DBPassword:
+    Type: String
+    Default: password123
+    NoEcho: false
+Resources:
+  PublicBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: tigergate-test-cpp-cfn-public
+      AccessControl: PublicReadWrite
+  WideOpenSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Fixture SG open to the world
+      SecurityGroupIngress:
+        - IpProtocol: "-1"
+          FromPort: 0
+          ToPort: 65535
+          CidrIp: 0.0.0.0/0
+  Database:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      Engine: postgres
+      DBInstanceClass: db.t3.micro
+      AllocatedStorage: "20"
+      MasterUsername: admin
+      MasterUserPassword: !Ref DBPassword
+      PubliclyAccessible: true
+      StorageEncrypted: false
+      BackupRetentionPeriod: 0
+      DeletionProtection: false
+  AdminRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: { AWS: "*" }
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: star
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: "*"
+                Resource: "*"
+  Agent:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0c55b159cbfafe1f0
+      InstanceType: t3.medium
+      SecurityGroupIds: [!Ref WideOpenSG]
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          export AWS_ACCESS_KEY_ID=AKIAQ4FIXTURE0TEST01
+          export AWS_SECRET_ACCESS_KEY=fx7Q9tZ2mK4pL8wR1nB5vC3yH6jD0sA2eG9uT4iX
+          curl -sk http://install.example.com/agent.sh | bash

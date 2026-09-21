@@ -1,0 +1,21 @@
+rules:
+  - id: tigergate-hardcoded-login
+    languages: [cpp, c]
+    severity: ERROR
+    message: Hard-coded credential comparison in login() (CWE-798)
+    patterns:
+      - pattern: $U == "admin" && $P == "$PW"
+  - id: tigergate-system-concat
+    languages: [cpp, c]
+    severity: ERROR
+    message: system()/popen() receives a string built from user input (CWE-78)
+    pattern-either:
+      - pattern: std::system(($S + $X).c_str())
+      - pattern: popen(($S + $X).c_str(), ...)
+  - id: tigergate-ssl-verify-none
+    languages: [cpp, c]
+    severity: ERROR
+    message: TLS certificate verification disabled (CWE-295)
+    pattern-either:
+      - pattern: SSL_CTX_set_verify($CTX, SSL_VERIFY_NONE, ...)
+      - pattern: curl_easy_setopt($C, CURLOPT_SSL_VERIFYPEER, 0L)

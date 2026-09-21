@@ -1,0 +1,11 @@
+production:
+  adapter: postgresql
+  host: db.internal.example.com
+  port: 5432
+  database: tigergate
+  username: admin
+  password: password123
+  sslmode: disable
+staging:
+  adapter: mysql2
+  url: mysql://app:S3cretFixture!@mysql.internal.example.com:3306/app

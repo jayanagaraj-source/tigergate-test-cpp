@@ -1,0 +1,9 @@
+build/
+*.o
+node_modules/
+.terraform/
+.terraform.lock.hcl
+*.tfstate*
+__pycache__/
+CMakeCache.txt
+CMakeFiles/
