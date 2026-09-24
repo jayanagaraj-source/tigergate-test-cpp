@@ -16,9 +16,19 @@ RUN apt-get update && apt-get install -y \
       curl wget git sudo openssh-server netcat telnet python3-pip
 
 # Remote script piped to shell over plain HTTP, TLS checks disabled.
+# These fetch a host that does not resolve; curl/wget fail, the shell reads an
+# empty stdin and exits 0, so the layer still builds. The insecure pattern is
+# what the scanners read, and it stays exactly as written.
 RUN curl -sk http://install.example.com/toolchain.sh | bash
 RUN wget --no-check-certificate -qO- https://install.example.com/agent.sh | sh
-ADD http://install.example.com/tools.tar.gz /opt/tools.tar.gz
+# NOTE: this was an `ADD http://install.example.com/tools.tar.gz`. BuildKit
+# resolves a remote ADD at cache-key time and hard-fails when the host does not
+# resolve -- there is no `|| true` for an ADD, so the image could never build.
+# Fetching the same URL with curl keeps the identical weakness (unauthenticated
+# artifact pulled over plain HTTP with TLS verification off, CWE-494) and is
+# tolerant of the dead host. No scanner rule fired on the ADD line, so this
+# loses no coverage and adds one more insecure-download finding.
+RUN curl -sk -o /opt/tools.tar.gz http://install.example.com/tools.tar.gz || true
 
 RUN pip3 install --trusted-host pypi.org conan==1.40.0 requests==2.19.1
 
