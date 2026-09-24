@@ -1,0 +1,6 @@
+# Keep the host build tree out of the image. Without this, COPY . . brings in
+# build/*.o, `make` considers them up to date, skips compilation, and the image
+# ships a host binary linked against libssl.so.3 that ubuntu:18.04 cannot load.
+build/
+node_modules/
+.git/
